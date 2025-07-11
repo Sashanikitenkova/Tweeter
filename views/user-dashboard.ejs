@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('./partials/head.ejs') %>
+<body>
+    <header class="header-container">
+            <h2 class="timeline">Welcome to Tweeter</h2>
+            <a class="login-logout" href="/logout">Logout</a>
+    </header>
+
+    <div class="container">
+        <% if (errorMessage) { %>
+            <div class="error-box"><%= errorMessage %></div>
+        <% } %>
+        <h2>Welkome <%= username%></h2>
+        <h2 class="page-title">There are <%= tweetCount%> tweets</h2>
+        <a href="/addTweet" class="btn">Add Tweet</a>
+
+        <% if (tweets.length > 0) { %>
+            <% tweets.forEach(item => { %>
+                <div class="post-card">
+                    <a href="/tweet/<%= item._id %>" class="see-more">See more</a>
+                    <p class="post-date"><%= new Date(item.createdAt).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' }) %></p>
+                    <p class="post-title"><%= item.title %></p>
+                    <p class="post-message"><%= item.tweet %></p>
+                </div>
+            <% }) %>
+        <% } else { %>
+            <p>There are no tweets to display...</p>
+        <% } %>
+    </div>
+</body>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('./partials/head.ejs') %>
+<body>
+  <div class="container">
+    <h4 class="page-title">Edit a Tweet</h4>
+     <% if (errorMessage) { %>
+            <div class="error-box"><%= errorMessage %></div>
+    <% } %>
+    <form class="edit-form" action="/tweet/edit/<%= tweet._id %>" method="POST">
+      <div class="post-card">
+        <textarea class="post-textarea" name="title" rows="1" cols="50"><%= tweet.title %></textarea>
+        <textarea class="post-textarea" name="tweet" rows="6" cols="50"><%= tweet.tweet %></textarea>
+      </div>
+      <button type="submit" class="submit-btn">Submit</button>
+    </form>
+  </div>
+</body>
+</html>

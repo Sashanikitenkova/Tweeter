@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('./partials/head.ejs') %>
+<body>
+    <div class="container">
+         <% if (errorMessage) { %>
+            <div class="error-box"><%= errorMessage %></div>
+        <% } %>
+        <h2>Add Tweet</h2>
+        <form class="post-edit-form" action="/addTweet" method="POST">
+            <input class="post-edit-input" name="title" type="text", placeholder="Title" />
+            <input class="post-edit-input" name="tweet" type="text", placeholder="Tweet" />
+            <button class="post-edit-button">Submit</button>
+        </form>
+    </div>
+</body>
+</html>
